@@ -43,6 +43,8 @@ And you're done! You can now start installing any Laravel Package out there.
 ## Available Methods
 > These helpers can be used across your Lumen project, not only with Laravel Packages.
 
+### Paths
+
 #### public_path
 Get the fully qualified path to the `public` directory. You can set env variable `PUBLIC_PATH` and it'll return the same instead of the default `public`.
 
@@ -51,6 +53,22 @@ Get the fully qualified path to the `config` directory (Mostly used with Laravel
 
 #### database_path
 Get the fully qualified path to the `database` directory (Mostly used with Laravel Packages).
+
+### Artisan
+
+#### vendor:publish
+Artisan command to Publish any publishable assets from vendor packages (Required to get Laravel Packages working!).
+
+```cli
+php artisan vendor:publish
+```
+OR
+
+```cli
+php artisan vendor:publish --provider="Vendor\Providers\PackageServiceProvider" 
+```
+
+### Other
 
 #### route_parameter
 ```php
