@@ -1,6 +1,7 @@
 <?php
 
-if (!function_exists('route_parameter')) {
+if ( ! function_exists('route_parameter'))
+{
     /**
      * Get a given parameter from the route.
      *
