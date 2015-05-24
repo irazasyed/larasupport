@@ -38,6 +38,15 @@ And Run the Composer update command
 $ composer update
 ```
 
+#### Add Service Provider
+
+Add this service provider to your `bootstrap/app.php` file.
+
+```php
+$app->register('Irazasyed\Larasupport\Providers\ArtisanServiceProvider');
+```
+Artisan Service Provider is an optional provider required only if you want `vendor:publish` command working.
+
 And you're done! You can now start installing any Laravel Package out there.
 
 ## Available Methods
