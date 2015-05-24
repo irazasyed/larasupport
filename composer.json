@@ -20,7 +20,10 @@
     "autoload": {
       "files": [
         "helpers.php"
-      ]
+      ],
+      "psr-4": {
+          "Irazasyed\\Larasupport\\": "src/"
+      }
     },
     "minimum-stability": "stable"
 }
