@@ -1,0 +1,26 @@
+{
+    "name": "irazasyed/larasupport",
+    "description": "Adds Support to use Laravel Packages in Lumen.",
+    "keywords": [
+      "laravel",
+      "lumen",
+      "laravel lumen",
+      "laravel lumen support",
+      "lumen packages",
+      "laravel packages",
+      "lumen support"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Syed Irfaq R.",
+            "email": "syed+gh@lukonet.com"
+        }
+    ],
+    "autoload": {
+      "files": [
+        "helpers.php"
+      ]
+    },
+    "minimum-stability": "stable"
+}
