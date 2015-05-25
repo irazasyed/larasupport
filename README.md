@@ -94,6 +94,8 @@ PRs are Welcome :)
 
 Any issues, please [report here](https://github.com/irazasyed/larasupport/issues).
 
+The methods have been ported from the core of Laravel framework and modified to fit the requirements.
+
 ## License
 
 [MIT](LICENSE) © [Syed Irfaq R.](http://lk.gd/irazasyed)
