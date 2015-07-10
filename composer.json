@@ -17,6 +17,9 @@
             "email": "syed+gh@lukonet.com"
         }
     ],
+    "require": {
+        "league/flysystem": "~1.0"
+    },
     "autoload": {
       "files": [
         "helpers.php"
