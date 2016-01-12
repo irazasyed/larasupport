@@ -1,15 +1,16 @@
-<?php namespace Irazasyed\Larasupport\Console;
+<?php 
+
+namespace Irazasyed\Larasupport\Console;
 
 use Illuminate\Console\Command;
 use League\Flysystem\MountManager;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Filesystem as Flysystem;
-use Symfony\Component\Console\Input\InputOption;
 use League\Flysystem\Adapter\Local as LocalAdapter;
 
-class VendorPublishCommand extends Command {
-
+class VendorPublishCommand extends Command
+{
     /**
      * The filesystem instance.
      *
@@ -18,23 +19,25 @@ class VendorPublishCommand extends Command {
     protected $files;
 
     /**
-     * The console command name.
+     * The console command signature.
      *
      * @var string
      */
-    protected $name = 'vendor:publish';
+    protected $signature = 'vendor:publish {--force : Overwrite any existing files.}
+            {--provider= : The service provider that has assets you want to publish.}
+            {--tag=* : One or many tags that have assets you want to publish.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = "Publish any publishable assets from vendor packages";
+    protected $description = 'Publish any publishable assets from vendor packages';
 
     /**
      * Create a new command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem
+     * @param  \Illuminate\Filesystem\Filesystem  $files
      * @return void
      */
     public function __construct(Filesystem $files)
@@ -51,32 +54,42 @@ class VendorPublishCommand extends Command {
      */
     public function fire()
     {
+        $tags = $this->option('tag');
+
+        $tags = $tags ?: [null];
+
+        foreach ($tags as $tag) {
+            $this->publishTag($tag);
+        }
+    }
+
+    /**
+     * Publishes the assets for a tag.
+     *
+     * @param  string  $tag
+     * @return mixed
+     */
+    private function publishTag($tag)
+    {
         $paths = ServiceProvider::pathsToPublish(
-            $this->option('provider'), $this->option('tag')
+            $this->option('provider'), $tag
         );
 
-        if (empty($paths))
-        {
-            return $this->comment("Nothing to publish.");
+        if (empty($paths)) {
+            return $this->comment("Nothing to publish for tag [{$tag}].");
         }
 
-        foreach ($paths as $from => $to)
-        {
-            if ($this->files->isFile($from))
-            {
+        foreach ($paths as $from => $to) {
+            if ($this->files->isFile($from)) {
                 $this->publishFile($from, $to);
-            }
-            elseif ($this->files->isDirectory($from))
-            {
+            } elseif ($this->files->isDirectory($from)) {
                 $this->publishDirectory($from, $to);
-            }
-            else
-            {
+            } else {
                 $this->error("Can't locate path: <{$from}>");
             }
         }
 
-        $this->info('Publishing Complete!');
+        $this->info("Publishing complete for tag [{$tag}]!");
     }
 
     /**
@@ -88,8 +101,7 @@ class VendorPublishCommand extends Command {
      */
     protected function publishFile($from, $to)
     {
-        if ($this->files->exists($to) && ! $this->option('force'))
-        {
+        if ($this->files->exists($to) && ! $this->option('force')) {
             return;
         }
 
@@ -114,10 +126,8 @@ class VendorPublishCommand extends Command {
             'to' => new Flysystem(new LocalAdapter($to)),
         ]);
 
-        foreach ($manager->listContents('from://', true) as $file)
-        {
-            if ($file['type'] === 'file' && ( ! $manager->has('to://'.$file['path']) || $this->option('force')))
-            {
+        foreach ($manager->listContents('from://', true) as $file) {
+            if ($file['type'] === 'file' && (! $manager->has('to://'.$file['path']) || $this->option('force'))) {
                 $manager->put('to://'.$file['path'], $manager->read('from://'.$file['path']));
             }
         }
@@ -133,8 +143,7 @@ class VendorPublishCommand extends Command {
      */
     protected function createParentDirectory($directory)
     {
-        if ( ! $this->files->isDirectory($directory))
-        {
+        if (! $this->files->isDirectory($directory)) {
             $this->files->makeDirectory($directory, 0755, true);
         }
     }
@@ -155,21 +164,4 @@ class VendorPublishCommand extends Command {
 
         $this->line('<info>Copied '.$type.'</info> <comment>['.$from.']</comment> <info>To</info> <comment>['.$to.']</comment>');
     }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return array(
-            array('force', null, InputOption::VALUE_NONE, 'Overwrite any existing files.'),
-
-            array('provider', null, InputOption::VALUE_OPTIONAL, 'The service provider that has assets you want to publish.'),
-
-            array('tag', null, InputOption::VALUE_OPTIONAL, 'The tag that has assets you want to publish.'),
-        );
-    }
-
 }
