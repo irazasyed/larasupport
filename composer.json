@@ -1,20 +1,14 @@
 {
     "name": "irazasyed/larasupport",
     "description": "Adds Support to use Laravel Packages in Lumen.",
-    "keywords": [
-      "laravel",
-      "lumen",
-      "laravel lumen",
-      "laravel lumen support",
-      "lumen packages",
-      "laravel packages",
-      "lumen support"
-    ],
+    "keywords": ["laravel", "laravel lumen support", "lumen packages", "laravel packages", "lumen support"],
     "license": "MIT",
     "authors": [
         {
             "name": "Syed Irfaq R.",
-            "email": "syed+gh@lukonet.com"
+            "email": "syed+gh@lukonet.com",
+            "homepage": "https://lukonet.com",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -22,11 +16,15 @@
     },
     "autoload": {
       "files": [
-        "helpers.php"
+        "src/helpers.php"
       ],
       "psr-4": {
           "Irazasyed\\Larasupport\\": "src/"
       }
     },
-    "minimum-stability": "stable"
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
