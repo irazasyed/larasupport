@@ -80,10 +80,21 @@ php artisan vendor:publish --provider="Vendor\Providers\PackageServiceProvider"
 ### Other
 
 #### route_parameter
+
 ```php
 route_parameter($name, $default = null)
 ```
 Get a given parameter from the route.
+
+#### elixir
+
+If you're using Laravel Elixir in Lumen, Then this helper function will come handy when you want to include assets from your build directory. By default, it assumes your Elixir's build directory is `build` under public directory (The default is as per the Elixir's default config). If you use a custom build directory, then you can simply set env variable `ELIXIR_BUILD_PATH` with your custom directory path and it'll use the same instead of the default.
+
+``` html
+<link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+
+<script src="{{ elixir('js/app.js') }}"></script>
+```
 
 ## Contributions
 
