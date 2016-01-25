@@ -75,12 +75,14 @@ if (! function_exists('elixir'))
     {
         static $manifest = null;
         
+        $buildPath = trim(env('ELIXIR_BUILD_PATH', 'build'), '/'); // Trim start & end slashes.
+        
         if (is_null($manifest)) {
-            $manifest = json_decode(file_get_contents(public_path('build/rev-manifest.json')), true);
+            $manifest = json_decode(file_get_contents(public_path($buildPath.'/rev-manifest.json')), true);
         }
         
         if (isset($manifest[$file])) {
-            return '/build/'.$manifest[$file];
+            return '/'.$buildPath.'/'.$manifest[$file];
         }
         
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
