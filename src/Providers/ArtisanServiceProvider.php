@@ -1,10 +1,12 @@
-<?php namespace Irazasyed\Larasupport\Providers;
+<?php
+
+namespace Irazasyed\Larasupport\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Irazasyed\Larasupport\Console\VendorPublishCommand;
 
-class ArtisanServiceProvider extends ServiceProvider {
-
+class ArtisanServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -31,8 +33,7 @@ class ArtisanServiceProvider extends ServiceProvider {
      */
     protected function registerVendorPublishCommand()
     {
-        $this->app->singleton('command.vendor.publish', function($app)
-        {
+        $this->app->singleton('command.vendor.publish', function ($app) {
             return new VendorPublishCommand($app['files']);
         });
     }
@@ -46,5 +47,4 @@ class ArtisanServiceProvider extends ServiceProvider {
     {
         return ['command.vendor.publish'];
     }
-
 }
