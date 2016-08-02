@@ -80,7 +80,7 @@ if (!function_exists('elixir')) {
         }
 
         if (isset($manifest[$file])) {
-            return '/'.$buildPath.'/'.$manifest[$file];
+            return url($buildPath.'/'.$manifest[$file]);
         }
 
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
