@@ -63,11 +63,12 @@ if (!function_exists('elixir')) {
     /**
      * Get the path to a versioned Elixir file.
      *
-     * @param  string  $file
-     * @param  string  $buildDirectory
-     * @return string
+     * @param string $file
+     * @param string $buildDirectory
      *
      * @throws \InvalidArgumentException
+     *
+     * @return string
      */
     function elixir($file, $buildDirectory = 'build')
     {
@@ -75,10 +76,10 @@ if (!function_exists('elixir')) {
         static $manifestPath;
 
         $buildBase = ($buildDirectory !== 'build') ? $buildDirectory : env('ELIXIR_BUILD_PATH', $buildDirectory);
-        
+
         if (is_null($manifest) || $manifestPath !== $buildBase) {
             $manifest = json_decode(file_get_contents(public_path($buildBase.'/rev-manifest.json')), true);
-            
+
             $manifestPath = $buildBase;
         }
 
