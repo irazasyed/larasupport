@@ -27,7 +27,7 @@ if (!function_exists('database_path')) {
      */
     function database_path($path = '')
     {
-        return app()->databasePath().($path ? '/'.$path : $path);
+        return app()->databasePath().($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
@@ -41,7 +41,7 @@ if (!function_exists('config_path')) {
      */
     function config_path($path = '')
     {
-        return base_path('config').($path ? '/'.$path : $path);
+        return base_path('config').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
@@ -55,38 +55,46 @@ if (!function_exists('public_path')) {
      */
     function public_path($path = '')
     {
-        return env('PUBLIC_PATH', base_path('public')).($path ? '/'.$path : $path);
+        return env('PUBLIC_PATH', base_path('public')).($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
-if (!function_exists('elixir')) {
+if (! function_exists('elixir')) {
     /**
      * Get the path to a versioned Elixir file.
      *
-     * @param string $file
-     * @param string $buildDirectory
+     * @param  string  $file
+     * @param  string  $buildDirectory
+     * @return string
      *
      * @throws \InvalidArgumentException
-     *
-     * @return string
      */
     function elixir($file, $buildDirectory = 'build')
     {
-        static $manifest;
+        static $manifest = [];
         static $manifestPath;
-
+        
         $buildBase = ($buildDirectory !== 'build') ? $buildDirectory : env('ELIXIR_BUILD_PATH', $buildDirectory);
-
-        if (is_null($manifest) || $manifestPath !== $buildBase) {
-            $manifest = json_decode(file_get_contents(public_path($buildBase.'/rev-manifest.json')), true);
-
-            $manifestPath = $buildBase;
+        
+        if (empty($manifest) || $manifestPath !== $buildBase) {
+            $path = public_path($buildBase.'/rev-manifest.json');
+            
+            if (file_exists($path)) {
+                $manifest = json_decode(file_get_contents($path), true);
+                $manifestPath = $buildBase;
+            }
         }
-
+        
         if (isset($manifest[$file])) {
             return '/'.trim($buildBase.'/'.$manifest[$file], '/');
         }
-
+        
+        $unversioned = public_path($file);
+        
+        if (file_exists($unversioned)) {
+            return '/'.trim($file, '/');
+        }
+        
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
