@@ -59,42 +59,43 @@ if (!function_exists('public_path')) {
     }
 }
 
-if (! function_exists('elixir')) {
+if (!function_exists('elixir')) {
     /**
      * Get the path to a versioned Elixir file.
      *
-     * @param  string  $file
-     * @param  string  $buildDirectory
-     * @return string
+     * @param string $file
+     * @param string $buildDirectory
      *
      * @throws \InvalidArgumentException
+     *
+     * @return string
      */
     function elixir($file, $buildDirectory = 'build')
     {
         static $manifest = [];
         static $manifestPath;
-        
+
         $buildBase = ($buildDirectory !== 'build') ? $buildDirectory : env('ELIXIR_BUILD_PATH', $buildDirectory);
-        
+
         if (empty($manifest) || $manifestPath !== $buildBase) {
             $path = public_path($buildBase.'/rev-manifest.json');
-            
+
             if (file_exists($path)) {
                 $manifest = json_decode(file_get_contents($path), true);
                 $manifestPath = $buildBase;
             }
         }
-        
+
         if (isset($manifest[$file])) {
             return '/'.trim($buildBase.'/'.$manifest[$file], '/');
         }
-        
+
         $unversioned = public_path($file);
-        
+
         if (file_exists($unversioned)) {
             return '/'.trim($file, '/');
         }
-        
+
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
