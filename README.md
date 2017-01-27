@@ -122,8 +122,8 @@ The MIT License (MIT). Please see [License File][link-license] for more informat
 [link-phpchat]: https://phpchat.co/?ref=larasupport
 [link-author]: https://github.com/irazasyed
 [link-repo]: https://github.com/irazasyed/larasupport
-[link-license]: LICENSE.md
-[link-issues]: ../../issues
-[link-contributors]: ../../contributors
+[link-license]: https://github.com/irazasyed/larasupport/blob/master/LICENSE.md
+[link-issues]: https://github.com/irazasyed/larasupport/issues
+[link-contributors]: https://github.com/irazasyed/larasupport/contributors
 [link-packagist]: https://packagist.org/packages/irazasyed/larasupport
 [link-downloads]: https://packagist.org/packages/irazasyed/larasupport/stats
