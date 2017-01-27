@@ -1,11 +1,11 @@
 Larasupport Package
 ====================
 
-[![Package for Lumen](https://img.shields.io/badge/Package%20for%20-Lumen-blue.svg?style=flat-square)](https://github.com/irazasyed/larasupport)
-[![Latest Version](https://img.shields.io/github/release/irazasyed/larasupport.svg?style=flat-square)](https://github.com/irazasyed/larasupport/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Total Downloads](https://img.shields.io/packagist/dt/irazasyed/larasupport.svg?style=flat-square)](https://packagist.org/packages/irazasyed/larasupport)
-
+[![Join the PHP Chat community][ico-phpchat]][link-phpchat]
+[![Package for Lumen][ico-package]][link-repo]
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]][link-license]
+[![Total Downloads][ico-downloads]][link-downloads]
 
 > Laravel Support for Lumen: Adds missing helpers that are not being made to the core of Lumen. Lets you use Laravel Packages in Lumen.
 >
@@ -16,25 +16,25 @@ Larasupport Package
 ## Quick Start
 
 
-### Installation
+### Install
 
 #### Install Through Composer
 
 You can either add the package directly by firing this command
 
-```
+``` bash
 $ composer require irazasyed/larasupport:~1.0
 ```
-	
+    
 Or add in the `require` key of `composer.json` file manually
 
-```
+``` json
 "irazasyed/larasupport": "~1.0"
 ```
 
 And Run the Composer update command
 
-```
+``` bash
 $ composer update
 ```
 
@@ -68,12 +68,12 @@ Get the fully qualified path to the `database` directory (Mostly used with Larav
 #### vendor:publish
 Artisan command to Publish any publishable assets from vendor packages (Required to get Laravel Packages working!).
 
-```cli
+``` bash
 php artisan vendor:publish
 ```
 OR
 
-```cli
+``` bash
 php artisan vendor:publish --provider="Vendor\Providers\PackageServiceProvider" 
 ```
 
@@ -81,7 +81,7 @@ php artisan vendor:publish --provider="Vendor\Providers\PackageServiceProvider"
 
 #### route_parameter
 
-```php
+``` php
 route_parameter($name, $default = null)
 ```
 Get a given parameter from the route.
@@ -102,11 +102,28 @@ PRs are Welcome :)
 
 ## Additional information
 
+Any issues, please [report here][link-issues]
 
-Any issues, please [report here](https://github.com/irazasyed/larasupport/issues).
+## Credits
 
-The methods have been ported from the core of Laravel framework and modified to fit the requirements.
+- [Syed Irfaq R.][link-author]
+- [All Contributors][link-contributors]
 
 ## License
 
-[MIT](LICENSE) © [Syed Irfaq R.](http://lk.gd/irazasyed)
+The MIT License (MIT). Please see [License File][link-license] for more information.
+
+[ico-phpchat]: https://img.shields.io/badge/Join-PHP%20Chat-blue.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/irazasyed/larasupport.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/irazasyed/larasupport.svg?style=flat-square
+[ico-package]: https://img.shields.io/badge/Package%20for%20-Lumen-blue.svg?style=flat-square
+
+[link-phpchat]: https://phpchat.co/?ref=larasupport
+[link-author]: https://github.com/irazasyed
+[link-repo]: https://github.com/irazasyed/larasupport
+[link-license]: LICENSE.md
+[link-issues]: ../../issues
+[link-contributors]: ../../contributors
+[link-packagist]: https://packagist.org/packages/irazasyed/larasupport
+[link-downloads]: https://packagist.org/packages/irazasyed/larasupport/stats
