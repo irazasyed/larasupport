@@ -99,3 +99,19 @@ if (!function_exists('elixir')) {
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
+
+if (!function_exists('bcrypt'))
+{
+	/**
+	 * Hash the given value
+	 *
+	 * @param string $value
+	 * @param array  $options
+	 *
+	 * @return string
+	 */
+	function bcrypt($value, $options = array())
+	{
+		return app('hash')->make($value, $options);
+	}
+}
