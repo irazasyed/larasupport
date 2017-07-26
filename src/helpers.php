@@ -109,7 +109,7 @@ if (!function_exists('bcrypt'))
 	 * @param array  $options
 	 *
 	 * @return string
-	**/
+	 */
 	function bcrypt($value, $options = array())
 	{
 		return app('hash')->make($value, $options);
