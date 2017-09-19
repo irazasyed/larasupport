@@ -85,7 +85,9 @@ if (!function_exists('elixir')) {
                 $manifestPath = $buildBase;
             }
         }
-
+	
+	$file = ltrim($file, '/');
+	    
         if (isset($manifest[$file])) {
             return '/'.trim($buildBase.'/'.$manifest[$file], '/');
         }
