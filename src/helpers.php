@@ -55,7 +55,7 @@ if (!function_exists('public_path')) {
      */
     function public_path($path = '')
     {
-        return env('PUBLIC_PATH', base_path('public')).($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return env('PUBLIC_PATH', base_path('public')).($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
     }
 }
 
@@ -112,7 +112,7 @@ if (!function_exists('bcrypt'))
 	 *
 	 * @return string
 	 */
-	function bcrypt($value, $options = array())
+	function bcrypt($value, $options = [])
 	{
 		return app('hash')->make($value, $options);
 	}
