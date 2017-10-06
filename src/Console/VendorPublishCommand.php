@@ -3,11 +3,11 @@
 namespace Irazasyed\Larasupport\Console;
 
 use Illuminate\Console\Command;
+use League\Flysystem\MountManager;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
-use League\Flysystem\Adapter\Local as LocalAdapter;
 use League\Flysystem\Filesystem as Flysystem;
-use League\Flysystem\MountManager;
+use League\Flysystem\Adapter\Local as LocalAdapter;
 
 class VendorPublishCommand extends Command
 {
@@ -94,7 +94,7 @@ class VendorPublishCommand extends Command
             $this->option('provider'), (array) $this->option('tag'),
         ];
 
-        if (!$this->provider && !$this->tags) {
+        if (! $this->provider && ! $this->tags) {
             $this->promptForProviderOrTag();
         }
     }
@@ -207,7 +207,7 @@ class VendorPublishCommand extends Command
      */
     protected function publishFile($from, $to)
     {
-        if (!$this->files->exists($to) || $this->option('force')) {
+        if (! $this->files->exists($to) || $this->option('force')) {
             $this->createParentDirectory(dirname($to));
 
             $this->files->copy($from, $to);
@@ -244,7 +244,7 @@ class VendorPublishCommand extends Command
     protected function moveManagedFiles($manager)
     {
         foreach ($manager->listContents('from://', true) as $file) {
-            if ($file['type'] === 'file' && (!$manager->has('to://'.$file['path']) || $this->option('force'))) {
+            if ($file['type'] === 'file' && (! $manager->has('to://'.$file['path']) || $this->option('force'))) {
                 $manager->put('to://'.$file['path'], $manager->read('from://'.$file['path']));
             }
         }
@@ -259,7 +259,7 @@ class VendorPublishCommand extends Command
      */
     protected function createParentDirectory($directory)
     {
-        if (!$this->files->isDirectory($directory)) {
+        if (! $this->files->isDirectory($directory)) {
             $this->files->makeDirectory($directory, 0755, true);
         }
     }

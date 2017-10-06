@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('route_parameter')) {
+if (! function_exists('route_parameter')) {
     /**
      * Get a given parameter from the route.
      *
@@ -17,7 +17,7 @@ if (!function_exists('route_parameter')) {
     }
 }
 
-if (!function_exists('database_path')) {
+if (! function_exists('database_path')) {
     /**
      * Get the database path.
      *
@@ -31,7 +31,7 @@ if (!function_exists('database_path')) {
     }
 }
 
-if (!function_exists('config_path')) {
+if (! function_exists('config_path')) {
     /**
      * Get the configuration path.
      *
@@ -45,7 +45,7 @@ if (!function_exists('config_path')) {
     }
 }
 
-if (!function_exists('public_path')) {
+if (! function_exists('public_path')) {
     /**
      * Get the path to the public folder.
      *
@@ -59,7 +59,7 @@ if (!function_exists('public_path')) {
     }
 }
 
-if (!function_exists('elixir')) {
+if (! function_exists('elixir')) {
     /**
      * Get the path to a versioned Elixir file.
      *
@@ -102,7 +102,7 @@ if (!function_exists('elixir')) {
     }
 }
 
-if (!function_exists('bcrypt')) {
+if (! function_exists('bcrypt')) {
     /**
      * Hash the given value.
      *
