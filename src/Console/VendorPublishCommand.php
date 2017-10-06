@@ -3,11 +3,11 @@
 namespace Irazasyed\Larasupport\Console;
 
 use Illuminate\Console\Command;
-use League\Flysystem\MountManager;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
-use League\Flysystem\Filesystem as Flysystem;
 use League\Flysystem\Adapter\Local as LocalAdapter;
+use League\Flysystem\Filesystem as Flysystem;
+use League\Flysystem\MountManager;
 
 class VendorPublishCommand extends Command
 {
@@ -52,7 +52,8 @@ class VendorPublishCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem  $files
+     * @param \Illuminate\Filesystem\Filesystem $files
+     *
      * @return void
      */
     public function __construct(Filesystem $files)
@@ -93,7 +94,7 @@ class VendorPublishCommand extends Command
             $this->option('provider'), (array) $this->option('tag'),
         ];
 
-        if (! $this->provider && ! $this->tags) {
+        if (!$this->provider && !$this->tags) {
             $this->promptForProviderOrTag();
         }
     }
@@ -135,6 +136,7 @@ class VendorPublishCommand extends Command
      * Parse the answer that was given via the prompt.
      *
      * @param string $choice
+     *
      * @return void
      */
     protected function parseChoice($choice)
@@ -151,7 +153,8 @@ class VendorPublishCommand extends Command
     /**
      * Publishes the assets for a tag.
      *
-     * @param  string  $tag
+     * @param string $tag
+     *
      * @return mixed
      */
     protected function publishTag($tag)
@@ -164,7 +167,8 @@ class VendorPublishCommand extends Command
     /**
      * Get all of the paths to publish.
      *
-     * @param  string  $tag
+     * @param string $tag
+     *
      * @return array
      */
     protected function pathsToPublish($tag)
@@ -177,8 +181,9 @@ class VendorPublishCommand extends Command
     /**
      * Publish the given item from and to the given location.
      *
-     * @param  string  $from
-     * @param  string  $to
+     * @param string $from
+     * @param string $to
+     *
      * @return void
      */
     protected function publishItem($from, $to)
@@ -195,13 +200,14 @@ class VendorPublishCommand extends Command
     /**
      * Publish the file to the given path.
      *
-     * @param  string  $from
-     * @param  string  $to
+     * @param string $from
+     * @param string $to
+     *
      * @return void
      */
     protected function publishFile($from, $to)
     {
-        if (! $this->files->exists($to) || $this->option('force')) {
+        if (!$this->files->exists($to) || $this->option('force')) {
             $this->createParentDirectory(dirname($to));
 
             $this->files->copy($from, $to);
@@ -213,15 +219,16 @@ class VendorPublishCommand extends Command
     /**
      * Publish the directory to the given directory.
      *
-     * @param  string  $from
-     * @param  string  $to
+     * @param string $from
+     * @param string $to
+     *
      * @return void
      */
     protected function publishDirectory($from, $to)
     {
         $this->moveManagedFiles(new MountManager([
             'from' => new Flysystem(new LocalAdapter($from)),
-            'to' => new Flysystem(new LocalAdapter($to)),
+            'to'   => new Flysystem(new LocalAdapter($to)),
         ]));
 
         $this->status($from, $to, 'Directory');
@@ -230,13 +237,14 @@ class VendorPublishCommand extends Command
     /**
      * Move all the files in the given MountManager.
      *
-     * @param  \League\Flysystem\MountManager  $manager
+     * @param \League\Flysystem\MountManager $manager
+     *
      * @return void
      */
     protected function moveManagedFiles($manager)
     {
         foreach ($manager->listContents('from://', true) as $file) {
-            if ($file['type'] === 'file' && (! $manager->has('to://'.$file['path']) || $this->option('force'))) {
+            if ($file['type'] === 'file' && (!$manager->has('to://'.$file['path']) || $this->option('force'))) {
                 $manager->put('to://'.$file['path'], $manager->read('from://'.$file['path']));
             }
         }
@@ -245,12 +253,13 @@ class VendorPublishCommand extends Command
     /**
      * Create the directory to house the published files if needed.
      *
-     * @param  string  $directory
+     * @param string $directory
+     *
      * @return void
      */
     protected function createParentDirectory($directory)
     {
-        if (! $this->files->isDirectory($directory)) {
+        if (!$this->files->isDirectory($directory)) {
             $this->files->makeDirectory($directory, 0755, true);
         }
     }
@@ -258,9 +267,10 @@ class VendorPublishCommand extends Command
     /**
      * Write a status message to the console.
      *
-     * @param  string  $from
-     * @param  string  $to
-     * @param  string  $type
+     * @param string $from
+     * @param string $to
+     * @param string $type
+     *
      * @return void
      */
     protected function status($from, $to, $type)
