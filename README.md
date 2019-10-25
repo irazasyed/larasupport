@@ -1,12 +1,12 @@
 Larasupport Package
 ====================
 
-[![Join the PHP Chat community][ico-phpchat]][link-phpchat]
+[![Join PHP Chat][ico-phpchat]][link-phpchat]
+[![Chat on Telegram][ico-telegram]][link-telegram]
 [![Package for Lumen][ico-package]][link-repo]
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]][link-license]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Firazasyed%2Flarasupport.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Firazasyed%2Flarasupport?ref=badge_shield)
 
 > Laravel Support for Lumen: Adds missing helpers that are not being made to the core of Lumen. Lets you use Laravel Packages in Lumen.
 >
@@ -24,13 +24,13 @@ Larasupport Package
 You can either add the package directly by firing this command
 
 ``` bash
-$ composer require irazasyed/larasupport:~1.0
+$ composer require irazasyed/larasupport:^1.0
 ```
     
 Or add in the `require` key of `composer.json` file manually
 
 ``` json
-"irazasyed/larasupport": "~1.0"
+"irazasyed/larasupport": "^1.0"
 ```
 
 And Run the Composer update command
@@ -114,13 +114,15 @@ Any issues, please [report here][link-issues]
 
 The MIT License (MIT). Please see [License File][link-license] for more information.
 
-[ico-phpchat]: https://img.shields.io/badge/Join-PHP%20Chat-blue.svg?style=flat-square
+[ico-phpchat]: https://img.shields.io/badge/Slack-PHP%20Chat-5c6aaa.svg?style=flat-square&logo=slack&labelColor=4A154B
+[ico-telegram]: https://img.shields.io/badge/@PHPChatCo-2CA5E0.svg?style=flat-square&logo=telegram&label=Telegram
 [ico-version]: https://img.shields.io/packagist/v/irazasyed/larasupport.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/irazasyed/larasupport.svg?style=flat-square
 [ico-package]: https://img.shields.io/badge/Package%20for%20-Lumen-blue.svg?style=flat-square
 
 [link-phpchat]: https://phpchat.co/?ref=larasupport
+[link-telegram]: https://t.me/PHPChatCo
 [link-author]: https://github.com/irazasyed
 [link-repo]: https://github.com/irazasyed/larasupport
 [link-license]: https://github.com/irazasyed/larasupport/blob/master/LICENSE.md
