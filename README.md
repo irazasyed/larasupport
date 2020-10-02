@@ -92,9 +92,17 @@ If you're using Laravel Elixir in Lumen, Then this helper function will come han
 <script src="{{ elixir('js/app.js') }}"></script>
 ```
 
-## Contributions
+## Contributing
 
-PRs are Welcome :)
+Thank you for considering contributing to the project. Please read [the contributing guide][link-contributing] before creating an issue or sending in a pull request.
+
+## Code of Conduct
+
+Please read our [Code of Conduct][link-code-of-conduct] before contributing or engaging in discussions.
+
+## Security
+
+If you discover a security vulnerability within this project, please email Syed at `syed at lukonet.com`. All security vulnerabilities will be promptly addressed. You may view our full security policy [here][link-security-policy].
 
 ## Additional information
 
@@ -107,7 +115,7 @@ Any issues, please [report here][link-issues]
 
 ## License
 
-The MIT License (MIT). Please see [License File][link-license] for more information.
+The Laravel framework is open-sourced software licensed under the MIT license. Larasupport consists almost entirely of Laravel source code, so maintains the same license. Please see [License File][link-license] for more information.
 
 [ico-phpchat]: https://img.shields.io/badge/Slack-PHP%20Chat-5c6aaa.svg?style=flat-square&logo=slack&labelColor=4A154B
 [ico-telegram]: https://img.shields.io/badge/@PHPChatCo-2CA5E0.svg?style=flat-square&logo=telegram&label=Telegram
@@ -125,5 +133,8 @@ The MIT License (MIT). Please see [License File][link-license] for more informat
 [link-contributors]: https://github.com/irazasyed/larasupport/contributors
 [link-packagist]: https://packagist.org/packages/irazasyed/larasupport
 [link-downloads]: https://packagist.org/packages/irazasyed/larasupport/stats
+[link-contributing]: https://github.com/irazasyed/larasupport/blob/master/.github/CONTRIBUTING.md
+[link-code-of-conduct]: https://github.com/irazasyed/larasupport/blob/master/.github/CODE_OF_CONDUCT.md
+[link-security-policy]: https://github.com/irazasyed/larasupport/security/policy
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Firazasyed%2Flarasupport.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Firazasyed%2Flarasupport?ref=badge_large)
