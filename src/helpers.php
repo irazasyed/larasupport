@@ -45,20 +45,6 @@ if (! function_exists('config_path')) {
     }
 }
 
-if (! function_exists('database_path')) {
-    /**
-     * Get the database path.
-     *
-     * @param string $path
-     *
-     * @return string
-     */
-    function database_path($path = '')
-    {
-        return app()->databasePath($path);
-    }
-}
-
 if (! function_exists('public_path')) {
     /**
      * Get the path to the public folder.
@@ -84,48 +70,5 @@ if (! function_exists('bcrypt')) {
     function bcrypt($value, $options = [])
     {
         return app('hash')->driver('bcrypt')->make($value, $options);
-    }
-}
-
-if (! function_exists('elixir')) {
-    /**
-     * Get the path to a versioned Elixir file.
-     *
-     * @param string $file
-     * @param string $buildDirectory
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return string
-     */
-    function elixir($file, $buildDirectory = 'build')
-    {
-        static $manifest = [];
-        static $manifestPath;
-
-        $buildBase = ($buildDirectory !== 'build') ? $buildDirectory : env('ELIXIR_BUILD_PATH', $buildDirectory);
-
-        if (empty($manifest) || $manifestPath !== $buildBase) {
-            $path = public_path($buildBase . '/rev-manifest.json');
-
-            if (file_exists($path)) {
-                $manifest = json_decode(file_get_contents($path), true);
-                $manifestPath = $buildBase;
-            }
-        }
-
-        $file = ltrim($file, '/');
-
-        if (isset($manifest[$file])) {
-            return '/' . trim($buildBase . '/' . $manifest[$file], '/');
-        }
-
-        $unversioned = public_path($file);
-
-        if (file_exists($unversioned)) {
-            return '/' . trim($file, '/');
-        }
-
-        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
