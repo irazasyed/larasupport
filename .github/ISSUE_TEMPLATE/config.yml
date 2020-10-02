@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: PHP Chat Community on Slack
+    url: https://phpchat.co
+    about: 'For any help and support from the community on Slack'
+  - name: PHP Chat Community on Telegram
+    url: https://t.me/PHPChatCo
+    about: 'For any help and support from the community on Telegram'

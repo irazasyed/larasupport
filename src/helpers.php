@@ -28,7 +28,7 @@ if (! function_exists('app_path')) {
      */
     function app_path($path = '')
     {
-        return env('APP_PATH', base_path('app')).($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
+        return env('APP_PATH', base_path('app')) . ($path ? DIRECTORY_SEPARATOR . ltrim($path, DIRECTORY_SEPARATOR) : $path);
     }
 }
 
@@ -69,7 +69,7 @@ if (! function_exists('public_path')) {
      */
     function public_path($path = '')
     {
-        return env('PUBLIC_PATH', base_path('public')).($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
+        return env('PUBLIC_PATH', base_path('public')) . ($path ? DIRECTORY_SEPARATOR . ltrim($path, DIRECTORY_SEPARATOR) : $path);
     }
 }
 
@@ -106,7 +106,7 @@ if (! function_exists('elixir')) {
         $buildBase = ($buildDirectory !== 'build') ? $buildDirectory : env('ELIXIR_BUILD_PATH', $buildDirectory);
 
         if (empty($manifest) || $manifestPath !== $buildBase) {
-            $path = public_path($buildBase.'/rev-manifest.json');
+            $path = public_path($buildBase . '/rev-manifest.json');
 
             if (file_exists($path)) {
                 $manifest = json_decode(file_get_contents($path), true);
@@ -117,13 +117,13 @@ if (! function_exists('elixir')) {
         $file = ltrim($file, '/');
 
         if (isset($manifest[$file])) {
-            return '/'.trim($buildBase.'/'.$manifest[$file], '/');
+            return '/' . trim($buildBase . '/' . $manifest[$file], '/');
         }
 
         $unversioned = public_path($file);
 
         if (file_exists($unversioned)) {
-            return '/'.trim($file, '/');
+            return '/' . trim($file, '/');
         }
 
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
