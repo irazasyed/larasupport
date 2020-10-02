@@ -41,6 +41,10 @@ And you're done! You can now start installing any Laravel Package out there :)
 
 ### Paths
 
+#### app_path
+
+Get the fully qualified path to the `app` directory.
+
 #### public_path
 
 Get the fully qualified path to the `public` directory. You can set env variable `PUBLIC_PATH` and it'll return the same instead of the default `public`.
