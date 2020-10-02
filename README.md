@@ -1,5 +1,4 @@
-Larasupport Package
-====================
+# Larasupport Package
 
 [![Join PHP Chat][ico-phpchat]][link-phpchat]
 [![Chat on Telegram][ico-telegram]][link-telegram]
@@ -8,35 +7,20 @@ Larasupport Package
 [![Software License][ico-license]][link-license]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-> Laravel Support for Lumen: Adds missing helpers that are not being made to the core of Lumen. Lets you use Laravel Packages in Lumen.
+> **Laravel Package Support for Lumen:** Makes Lumen compatible with Laravel Pacakges. You can use any Laravel Packages in Lumen by installing **Larasupport** Package.
 >
-> There are some helper functions that are available in core of Laravel framework which are being used in Laravel Packages. Now because of these helpers missing in core of the Lumen, You won't be able to use those amazing Laravel Packages.
+> Laravel Packages make use of various global helpers that are not available in Lumen core by default which prevents us from using any Laravel Package in Lumen.
 >
-> I had submited PRs as well as created issue tickets in Lumen to add these helpers to the core but it got rejected with a reason to use Laravel instead. Just for Packages support i didn't want to use full-stack framework. There were few discussions about the same as well. Hence, This package to deal with this issue!
+> This package adds the missing pieces to make Lumen compatible along with the support for `vendor:publish` artisan command and other features.  
 
 ## Quick Start
 
-
 ### Install
 
-#### Install Through Composer
+You can add the package directly by firing this command
 
-You can either add the package directly by firing this command
-
-``` bash
-$ composer require irazasyed/larasupport:^1.0
-```
-    
-Or add in the `require` key of `composer.json` file manually
-
-``` json
-"irazasyed/larasupport": "^1.0"
-```
-
-And Run the Composer update command
-
-``` bash
-$ composer update
+```bash
+$ composer require irazasyed/larasupport
 ```
 
 #### Add Service Provider
@@ -46,27 +30,33 @@ Add this service provider to your `bootstrap/app.php` file.
 ``` php
 $app->register(Irazasyed\Larasupport\Providers\ArtisanServiceProvider::class);
 ```
+
 Artisan Service Provider is an optional provider required only if you want `vendor:publish` command working.
 
-And you're done! You can now start installing any Laravel Package out there.
+And you're done! You can now start installing any Laravel Package out there :)
 
 ## Available Methods
+
 > These helpers can be used across your Lumen project, not only with Laravel Packages.
 
 ### Paths
 
 #### public_path
+
 Get the fully qualified path to the `public` directory. You can set env variable `PUBLIC_PATH` and it'll return the same instead of the default `public`.
 
 #### config_path
+
 Get the fully qualified path to the `config` directory (Mostly used with Laravel Packages).
 
 #### database_path
+
 Get the fully qualified path to the `database` directory (Mostly used with Laravel Packages).
 
 ### Artisan
 
 #### vendor:publish
+
 Artisan command to Publish any publishable assets from vendor packages (Required to get Laravel Packages working!).
 
 ``` bash
@@ -85,6 +75,7 @@ php artisan vendor:publish --provider="Vendor\Providers\PackageServiceProvider"
 ``` php
 route_parameter($name, $default = null)
 ```
+
 Get a given parameter from the route.
 
 #### elixir
@@ -107,7 +98,7 @@ Any issues, please [report here][link-issues]
 
 ## Credits
 
-- [Syed Irfaq R.][link-author]
+- [Irfaq Syed][link-author]
 - [All Contributors][link-contributors]
 
 ## License
@@ -130,6 +121,5 @@ The MIT License (MIT). Please see [License File][link-license] for more informat
 [link-contributors]: https://github.com/irazasyed/larasupport/contributors
 [link-packagist]: https://packagist.org/packages/irazasyed/larasupport
 [link-downloads]: https://packagist.org/packages/irazasyed/larasupport/stats
-
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Firazasyed%2Flarasupport.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Firazasyed%2Flarasupport?ref=badge_large)
