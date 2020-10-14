@@ -9,7 +9,7 @@
 
 # Larasupport Package
 
-> **Laravel Package Support for Lumen:** Makes Lumen compatible with Laravel Pacakges. You can use any Laravel Packages in Lumen by installing **Larasupport** Package.
+> **Laravel Package Support for Lumen:** Makes Lumen compatible with Laravel Packages. You can use any Laravel Packages in Lumen by installing **Larasupport** Package.
 >
 > Laravel Packages make use of various global helpers that are not available in Lumen core by default which prevents us from using any Laravel Package in Lumen.
 >
