@@ -41,7 +41,7 @@ if (! function_exists('config_path')) {
      */
     function config_path($path = '')
     {
-        return app()->configPath($path);
+        return base_path('config').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
