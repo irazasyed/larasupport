@@ -20,7 +20,7 @@
     }
   ],
   "require": {
-    "league/flysystem": "^1.0"
+    "league/flysystem": "^2.3"
   },
   "config": {
     "preferred-install": "dist",
