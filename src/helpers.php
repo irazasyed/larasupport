@@ -72,3 +72,8 @@ if (! function_exists('bcrypt')) {
         return app('hash')->driver('bcrypt')->make($value, $options);
     }
 }
+
+function now($timezone = null)
+{
+    return Carbon::now($timezone);
+}
