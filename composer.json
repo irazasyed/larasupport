@@ -1,5 +1,5 @@
 {
-  "name": "irazasyed/larasupport",
+  "name": "cryental/larasupport",
   "type": "library",
   "description": "Adds Laravel Package Support in Lumen.",
   "keywords": [
@@ -20,7 +20,7 @@
     }
   ],
   "require": {
-    "league/flysystem": "^1.0"
+    "league/flysystem": "^3.0"
   },
   "config": {
     "preferred-install": "dist",
