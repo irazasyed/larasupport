@@ -2,25 +2,21 @@
   "name": "cryental/larasupport",
   "type": "library",
   "description": "Adds Laravel Package Support in Lumen.",
-  "keywords": [
-    "laravel",
-    "laravel lumen support",
-    "lumen packages",
-    "laravel packages",
-    "lumen support",
-    "larasupport",
-    "laravel package support"
-  ],
   "license": "MIT",
   "authors": [
     {
       "name": "Irfaq Syed",
       "email": "syed+gh@lukonet.com",
       "homepage": "https://github.com/irazasyed"
+    },
+    {
+      "name": "Cryental",
+      "email": "contact@cryental.dev",
+      "homepage": "https://cryental.dev"
     }
   ],
   "require": {
-    "league/flysystem": "^3.0"
+    "league/flysystem": "^3.2"
   },
   "config": {
     "preferred-install": "dist",
